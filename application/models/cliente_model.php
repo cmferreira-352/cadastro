@@ -16,9 +16,9 @@ class Cliente_Model extends CI_Model
                     ?, ?
                 )
         ';
-        $query = $this->db->query($sql, $info);
+        $this->db->query($sql, $info);
         
-        if ($query->affected_rows() == 1) {
+        if ($this->db->affected_rows() == 1) {
             return true;
         }
         
