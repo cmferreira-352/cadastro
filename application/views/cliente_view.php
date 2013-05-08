@@ -1,6 +1,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/bootstrap/css/bootstrap.min.css"/>
         <title>
             Cadastro de Cliente
         </title>
@@ -15,5 +16,7 @@
             <input type="submit" name="criar" value="Cadastrar" />
             <?php echo validation_errors()?>              
         </form>
+        
+        <a href="<?php echo site_url('cliente/listar') ?>" class="btn btn-action">Listar Clientes</a>
     </body>
 </html>

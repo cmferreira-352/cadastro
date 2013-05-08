@@ -24,4 +24,27 @@ class Cliente_Model extends CI_Model
         
         throw new RuntimeException('Cadastro não efetuado!');
     }
+    
+    /**
+     * Retorna lista de clientes cadastrados.
+     * 
+     * @author Hussein 
+     * @return object todos os clientes
+     * @throws RuntimeException
+     */
+    public function listname()
+    {
+        $sql= '
+            SELECT
+                id, nome, telefone
+            FROM
+                cliente
+        ';
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0 ) {
+               return $query->result();
+        } else {
+            throw new RuntimeException('Não existem clientes cadastrados.');
+        }
+    }
 }

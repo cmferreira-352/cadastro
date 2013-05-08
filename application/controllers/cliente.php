@@ -28,8 +28,8 @@ class Cliente extends CI_Controller
                 ));   
                 
                 $this->session->set_flashdata('message', 'Cadastro feito com sucesso!');
-                redirect('cliente');
-            } catch (Exception $e) {
+                redirect('cliente'); 
+           } catch (Exception $e) {
                 $this->session->set_flashdata('message', $e->getMessage());
             }
         } else {
@@ -37,5 +37,19 @@ class Cliente extends CI_Controller
         }
         
     }
+    
+    public function listar()
+    {
+        try {
+            $clientes = $this->cliente_model->listname();
+            $this->load->view('listar_cliente_view', array(
+                'clientes' => $clientes,
+            ));
 
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+    }
+    
 }
