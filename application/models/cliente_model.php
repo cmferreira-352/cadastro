@@ -103,4 +103,25 @@ class Cliente_Model extends CI_Model
         
         throw new RuntimeException('Cadastro não atualizado!');
     }
+    
+    /**
+     * Apaga um registro da tabela Cliente
+     * 
+     * @param numeric $id
+     * @return boolean
+     * @throws RuntimeException
+     */
+    public function delete($id)
+    {
+        $sql = '
+            DELETE FROM cliente WHERE id = ?
+        ';
+        $this->db->query($sql, $id);
+        
+        if ($this->db->affected_rows() == 1) {
+            return true;
+        }
+        
+        throw new RuntimeException('Erro ao deletar cliente <3');
+    }
 }

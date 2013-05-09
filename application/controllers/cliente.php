@@ -78,5 +78,17 @@ class Cliente extends CI_Controller
             echo $e->getMessage();
         }
     }
-            
+    public function apagar()
+    {
+        try {
+            $clientes = $this->cliente_model->listname();
+//            $this->load->view('listar_cliente_view', array(
+//                'clientes' => $clientes,
+//            ));
+
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+    }       
 }    
