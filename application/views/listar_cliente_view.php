@@ -7,6 +7,12 @@
         </title>
     </head>
     <body>
+        <?php if ($this->session->flashdata('feedback')): ?>
+            <div class="alert alert-success">
+                <?php echo $this->session->flashdata('feedback') ?>
+                <button class="close" data-dismiss="alert">x</button>
+            </div>
+        <?php endif ?> 
         <h1>
             Lista de Clientes mau pagadores
         </h1>
@@ -15,6 +21,7 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Telefone</th>
+                <th>Editar</th>
             </thead>
             
             <tbody>
@@ -23,6 +30,11 @@
                     <td><?php echo $cliente->id ?></td>
                     <td><?php echo $cliente->nome ?></td>
                     <td><?php echo $cliente->telefone ?></td>
+                    <td><a class="btn btn-action"
+                           href="<?php echo site_url('cliente/atualizar/'.$cliente->id) ?>">
+                            <i class="icon-edit"></i>
+                        </a>
+                    </td>
                 </tr>
                 <?php endforeach;?>
             </tbody>
