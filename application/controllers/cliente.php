@@ -78,17 +78,14 @@ class Cliente extends CI_Controller
             echo $e->getMessage();
         }
     }
-    public function apagar()
+    public function apagar($id)
     {
         try {
-            $clientes = $this->cliente_model->listname();
-//            $this->load->view('listar_cliente_view', array(
-//                'clientes' => $clientes,
-//            ));
-
+            $this->cliente_model->delete($id);
+            $this->session->set_flashdata('feedback', 'Cliente excluido com sucesso!');
         } catch (Exception $e) {
-            echo $e->getMessage();
+            $this->session->set_flashdata('feedback', $e->getMessage());
         }
-
+        redirect('cliente/listar');
     }       
 }    
